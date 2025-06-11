@@ -212,10 +212,6 @@ addTeacherBtn.addEventListener("click", () => {
   modal.classList.add("active");
 });
 
-window.addEventListener("dblclick", (e) => {
-  if (e.target.classList.contains("modal")) modal.classList.remove("active");
-});
-
 form.addEventListener("submit", async function (e) {
   e.preventDefault();
 
@@ -322,3 +318,45 @@ inputSearch.addEventListener("keyup", (e) => {
 });
 
 // **************** ⇈ ⇈ search student ⇈ ⇈ ***************
+
+// **************** ⇊ ⇊ message post ⇊ ⇊ ***************
+
+let messageBtn = document.querySelector(".nav-links li a");
+let messageModal = document.querySelector(".messageModule");
+let messageForm = document.querySelector(".messageModule .form");
+messageBtn.addEventListener("click", () => {
+  messageModal.classList.add("active");
+});
+
+window.addEventListener("dblclick", (e) => {
+  if (e.target.classList.contains("modal")) modal.classList.remove("active");
+  if (e.target.classList.contains("messageModule"))
+    messageModal.classList.remove("active");
+});
+
+let massageModalDeleteBtn = document.querySelector(".messageModule .form span");
+
+massageModalDeleteBtn.addEventListener("click", () => {
+  messageModal.classList.remove("active");
+});
+
+messageForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  let email = this.email.value;
+  let message = this.message.value;
+
+  let sentText = `<b>userEmail:</b> ${email}\n<b>userText:</b> ${message}`;
+  let token = "7931994188:AAGteZaZ0R1YRCE4YcH6z9a2QhG9ZhmOZ2Q";
+  let chatId = "-4651127963";
+
+  let url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(
+    sentText
+  )}&parse_mode=html`;
+
+  let api = new XMLHttpRequest();
+  api.open("GET", url, true);
+  api.send();
+
+  alert("Xabar yuborildi!");
+});
