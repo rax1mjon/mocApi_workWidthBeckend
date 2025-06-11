@@ -10,8 +10,12 @@ export { ENDPOINT, LIMIT, request };
 let teachersList = document.querySelector(".teacher--menu");
 let searchInput = document.querySelector(".search-input");
 let paginationBox = document.querySelector(".pagination");
-let btns = document.querySelectorAll("button");
+let forms = document.querySelectorAll("form");
 let activePage = 1;
+
+forms.forEach((form) => {
+  form.addEventListener("submit", (e) => e.preventDefault());
+});
 function getCard(
   {
     createdAt,
@@ -353,4 +357,18 @@ messageForm.addEventListener("submit", function (e) {
   api.send();
 
   alert("Xabar yuborildi!");
+});
+
+// **************** ⇈ ⇈  message post ⇈ ⇈ ***************
+
+// **************** ⇊ ⇊ sort by isMarried teachers ⇊ ⇊ ***************
+
+let select = document.getElementById("sortByIsMarried");
+
+select.addEventListener("change", (e) => {
+  let selectValue = e.target.value;
+
+  selectValue !== "all"
+    ? getData(`teachers?isMarried=${selectValue}`, false)
+    : getData();
 });
