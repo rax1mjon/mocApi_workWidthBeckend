@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AX1OS</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script defer type="module" src="./Js/main.js"></script>
+</head>
+
+<header class="header">
+
+  <div class="container header">
+    <div class="logo">Teachers</div>
+
+    <div class="search-container">
+      <form>
+        <input type="text" id="search" placeholder="Search..." name="search" class="search-input">
+        <button type="submit" class="search-button">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#414141">
+            <path
+              d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" />
+          </svg>
+        </button>
+      </form>
+    </div>
+
+    <nav class="navbar">
+      <ul class="nav-links">
+        <li><a href="#">message</a></li>
+      </ul>
+    </nav>
+
+  </div>
+  <!-- <div class="mobile-menu-btn">
+    ☰
+  </div> -->
+</header>
+
+<div class="modal">
+  <form class="formAdd">
+    <p class="title">Add teacher </p>
+    <div class="flex">
+      <label>
+        <input class="input" id="firstName" type="text" placeholder="" required>
+        <span>Firstname</span>
+      </label>
+
+      <label>
+        <input class="input" id="lastName" type="text" placeholder="" required>
+        <span>Lastname</span>
+      </label>
+    </div>
+
+    <label>
+      <input class="input" id="email" type="email" placeholder="" required>
+      <span>Email</span>
+    </label>
+
+    <label>
+      <input class="input" id="avatar" type="text" placeholder="" required>
+      <span>Img Avatar</span>
+    </label>
+
+    <label>
+      <input class="input" id="phoneNumber" type="number" placeholder="" required>
+      <span>Phone Number</span>
+    </label>
+
+    <div class="checkbox-apple">
+      <input class="yep" id="isMarried" type="checkbox">
+      <label for="isMarried"></label>
+      <span>isMarried</span>
+    </div>
+
+    <button class="submit">Submit</button>
+  </form>
+</div>
+
+<section class="teacher">
+  <div class="teacher--wrapper container">
+    <div class="teacher--header">
+      <h2>Teachers</h2>
+      <div class="teacher--header-actions">
+        <button class="btn btn-add-teacher">
+          <span class="btn-icon">➕</span>
+          Add Teacher
+        </button>
+      </div>
+    </div>
+    <ul class="teacher--menu"></ul>
+
+    <div class="pagination"></div>
+
+  </div>
+</section>
+
+<div class="messageModule">
+  
+</div>
+
+<body>
+
+</body>
+
+</html>

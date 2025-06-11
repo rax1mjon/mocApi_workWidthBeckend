@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AX1OS students</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script defer type="module" src="./Js/students.js"></script>
+</head>
+
+<header class="header">
+
+  <div class="container header">
+    <div class="logo">Students</div>
+
+    <div class="search-container">
+      <form>
+        <input type="text" id="search" placeholder="Search..." name="search" class="search-input">
+        <button type="submit" class="search-button">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#414141">
+            <path
+              d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" />
+          </svg>
+        </button>
+      </form>
+    </div>
+
+    <nav class="navbar">
+      <ul class="nav-links">
+        <li><a href="#">message</a></li>
+      </ul>
+    </nav>
+
+  </div>
+  <!-- <div class="mobile-menu-btn">
+    ☰
+  </div> -->
+</header>
+
+<div class="modal">
+  <form class="formAdd">
+    <p class="title">Add Student </p>
+    <div class="flex">
+      <label>
+        <input class="input" id="firstName" type="text" placeholder="" required>
+        <span>Firstname</span>
+      </label>
+
+      <label>
+        <input class="input" id="lastName" type="text" placeholder="" required>
+        <span>Lastname</span>
+      </label>
+    </div>
+
+    <label>
+      <input class="input" id="email" type="email" placeholder="" required>
+      <span>Email</span>
+    </label>
+
+    <label>
+      <input class="input" id="birthday" type="date" placeholder="" required>
+      <span>Birthday</span>
+    </label>
+
+    <label>
+      <input class="input" id="avatar" type="text" placeholder="" required>
+      <span>Img Avatar</span>
+    </label>
+
+    <label>
+      <input class="input" id="phoneNumber" type="number" placeholder="" required>
+      <span>Phone Number</span>
+    </label>
+
+    <div class="checkbox-apple">
+      <input class="yep" id="isWork" type="checkbox">
+      <label for="isWork"></label>
+      <span>isWork</span>
+    </div>
+
+    <button class="submit">Submit</button>
+  </form>
+</div>
+
+<section class="teacher">
+  <div class="teacher--wrapper container">
+    <div class="teacher--header">
+      <a href="./index.html">teachers</a>
+      <h2>Students</h2>
+
+
+      <div class="teacher--header-actions">
+        <button class="btn btn-add-teacher">
+          <span class="btn-icon">➕</span>
+          Add Student
+        </button>
+      </div>
+    </div>
+    <ul class="teacher--menu"></ul>
+
+    <div class="pagination"></div>
+
+  </div>
+</section>
+
+<!-- 
+      <div class="user-card">
+        <div class="card-header">
+          <div class="avatar-container">
+            <img class="avatar" src="https://avatars.githubusercontent.com/u/32419245" alt="Albert Heller II Gibson">
+          </div>
+        </div>
+        <div class="card-body">
+          <h2 class="user-name">Albert Heller II Gibson</h2>
+          <p class="user-title">Field 1 Specialist</p>
+
+          <div class="divider"></div>
+
+          <div class="user-details">
+            <div class="detail-item">
+              <div class="detail-icon">🎂</div>
+              <div class="detail-content">
+                <div class="detail-label">Birthday</div>
+                <div class="detail-value">February 20, 2001</div>
+              </div>
+            </div>
+
+            <div class="detail-item">
+              <div class="detail-icon">✉️</div>
+              <div class="detail-content">
+                <div class="detail-label">Email</div>
+                <div class="detail-value">Hope.Walker7@yahoo.com</div>
+              </div>
+            </div>
+
+            <div class="detail-item">
+              <div class="detail-icon">📱</div>
+              <div class="detail-content">
+                <div class="detail-label">Phone</div>
+                <div class="detail-value">(481) 891-9781 x03488</div>
+              </div>
+            </div>
+
+            <div class="detail-item">
+              <div class="detail-icon">🕒</div>
+              <div class="detail-content">
+                <div class="detail-label">Member Since</div>
+                <div class="detail-value">June 9, 2025</div>
+              </div>
+            </div>
+
+            <div class="detail-item">
+              <div class="detail-icon">💼</div>
+              <div class="detail-content">
+                <div class="detail-label">Status</div>
+                <div class="detail-value">
+                  <span class="status">Not Working</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="action-buttons">
+            <button class="btn btn-edit">
+              <span class="btn-icon">✏️</span>
+              Edit
+            </button>
+            <button class="btn btn-delete">
+              <span class="btn-icon">🗑️</span>
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+ -->
+
+<body>
+
+</body>
+
+</html>
