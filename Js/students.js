@@ -360,3 +360,15 @@ messageForm.addEventListener("submit", function (e) {
 
   alert("Xabar yuborildi!");
 });
+
+// **************** ⇊ ⇊ sort by isMarried teachers ⇊ ⇊ ***************
+
+let select = document.getElementById("sortByIsWork");
+
+select.addEventListener("change", (e) => {
+  let selectValue = e.target.value;
+
+  selectValue !== "all"
+    ? getData(`students?isWork=${selectValue}`, false)
+    : getData();
+});
