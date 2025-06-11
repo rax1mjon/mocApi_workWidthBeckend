@@ -104,11 +104,6 @@ function getCard(
 
   list.append(template.content.firstElementChild);
 }
-btns.forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    e.preventDefault();
-  });
-});
 
 async function getData(CONSTANTQueryArgument = "teachers", isSearch = true) {
   try {
@@ -127,7 +122,8 @@ async function getData(CONSTANTQueryArgument = "teachers", isSearch = true) {
     });
 
     teachersList.innerHTML = "";
-    pagination();
+      
+      isSearch ? pagination() : (paginationBox.innerHTML = "");
 
     data.forEach((user) => getCard(user, teachersList));
 
@@ -209,7 +205,7 @@ changeActivePage();
 
 let addTeacherBtn = document.querySelector(".btn-add-teacher");
 let modal = document.querySelector(".modal");
-let form = document.querySelector(".modal .formAdd");
+let form = document.querySelector(".modal form");
 
 addTeacherBtn.addEventListener("click", () => {
   form.classList.replace("EditForm", "formAdd");
@@ -221,6 +217,8 @@ addTeacherBtn.addEventListener("click", () => {
   form.phoneNumber.value = "";
   form.isMarried.checked = false;
   form.lastElementChild.textContent = "Submit";
+  form.firstElementChild.textContent = "Add teacher";
+
   modal.classList.add("active");
 });
 
@@ -228,25 +226,30 @@ window.addEventListener("dblclick", (e) => {
   if (e.target.classList.contains("modal")) modal.classList.remove("active");
 });
 
-form.addEventListener("submit", async function () {
+form.addEventListener("submit", async function (e) {
+  e.preventDefault();
   try {
+    let teacher = {
+      createdAt: new Date().toISOString(),
+      FirstName: this.firstName.value,
+      LastName: this.lastName.value,
+      avatar: this.avatar.value,
+      group: [],
+      isMarried: this.isMarried.checked,
+      phoneNumber: this.phoneNumber.value,
+      email: this.email.value,
+    };
     if (!this.classList.contains("EditForm")) {
-      let teacher = {
-        createdAt: new Date().toISOString(),
-        FirstName: this.firstName.value,
-        LastName: this.lastName.value,
-        avatar: this.avatar.value,
-        group: [],
-        isMarried: this.isMarried.checked,
-        phoneNumber: this.phoneNumber.value,
-        email: this.email.value,
-      };
-
       await request.post("teachers", teacher);
-
-      modal.classList.remove("active");
-      getData();
+    } else {
+      await request.put(
+        "teachers/" + this.getAttribute("data-edit-id"),
+        teacher
+      );
     }
+
+    modal.classList.remove("active");
+    getData();
   } catch (error) {
     console.log("submit error:", error.message);
   }
@@ -287,31 +290,12 @@ document.addEventListener("click", async function (e) {
     EditForm.lastName.value = data.LastName;
     EditForm.email.value = data.email;
     EditForm.avatar.value = data.avatar;
-    EditForm.phoneNumber.value = data.phoneNumber.split("x")[0];
+    EditForm.phoneNumber.value = "";
     EditForm.isMarried.checked = data.isMarried;
     EditForm.lastElementChild.textContent = "Edit";
+    EditForm.firstElementChild.textContent = "Edit teacher";
 
-    EditForm.addEventListener("submit", async function () {
-      let teacher = {
-        createdAt: new Date().toISOString(),
-        FirstName: this.firstName.value,
-        LastName: this.lastName.value,
-        avatar: this.avatar.value,
-        group: [],
-        isMarried: this.isMarried.checked,
-        phoneNumber: this.phoneNumber.value,
-        email: this.email.value,
-      };
-
-      try {
-        await request.put("teachers/" + editBtn.id, teacher);
-        modal.classList.remove("active");
-        getData();
-      } catch (error) {
-        console.log("Edit function:", error.message);
-      }
-    });
-
+    EditForm.setAttribute("data-edit-id", editBtn.id);
     modal.classList.add("active");
   }
 });
