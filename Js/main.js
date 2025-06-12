@@ -349,7 +349,6 @@ messageForm.addEventListener("submit", function (e) {
   let message = this.message.value;
 
   let sentText = `<b>userEmail:</b> ${email}\n<b>userText:</b> ${message}`;
-  let token = "7931994188:AAGteZaZ0R1YRCE4YcH6z9a2QhG9ZhmOZ2Q";
   let chatId = "-4651127963";
 
   let url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(
