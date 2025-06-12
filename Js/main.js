@@ -11,6 +11,7 @@ let teachersList = document.querySelector(".teacher--menu");
 let searchInput = document.querySelector(".search-input");
 let paginationBox = document.querySelector(".pagination");
 let forms = document.querySelectorAll("form");
+let loading = document.querySelector(".loadingNone");
 let activePage = 1;
 
 forms.forEach((form) => {
@@ -110,6 +111,7 @@ function getCard(
 }
 
 async function getData(CONSTANTQueryArgument = "teachers", isSearch = true) {
+  loading.classList.replace("loadingNone", "loading");
   try {
     let query;
     if (isSearch) {
@@ -142,6 +144,8 @@ async function getData(CONSTANTQueryArgument = "teachers", isSearch = true) {
     });
   } catch (error) {
     if (error.status == 404) teachersList.innerHTML = "<p>No Teachers</p>";
+  } finally {
+    loading.classList.replace("loading", "loadingNone");
   }
 }
 

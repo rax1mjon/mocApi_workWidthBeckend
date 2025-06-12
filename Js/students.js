@@ -12,6 +12,7 @@ let teachersList = document.querySelector(".teacher--menu");
 let searchInput = document.querySelector(".search-input");
 let paginationBox = document.querySelector(".pagination");
 let btns = document.querySelectorAll("button");
+let loading = document.querySelector(".loadingNone");
 let activePage = 1;
 function getCard(
   {
@@ -107,6 +108,8 @@ function getCard(
 }
 
 async function getData(CONSTANTQueryArgument = CONSTANTQuery, isSearch = true) {
+  loading.classList.replace("loadingNone", "loading");
+
   try {
     let query;
     if (isSearch) {
@@ -130,6 +133,8 @@ async function getData(CONSTANTQueryArgument = CONSTANTQuery, isSearch = true) {
     deleteTeacher();
   } catch (error) {
     teachersList.innerHTML = "<p>No Students</p>";
+  } finally {
+    loading.classList.replace("loading", "loadingNone");
   }
 }
 
